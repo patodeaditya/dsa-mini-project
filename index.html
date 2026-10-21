@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartPark | Smart Parking Management</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="smartpark.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">P</div>
+      <div><h1>SmartPark</h1><p>Smart Parking Management System</p></div>
+    </div>
+    <span id="status" class="status">Loading C++ engine…</span>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <div><p class="eyebrow">PARKING CONTROL CENTER</p><h2>Dashboard</h2>
+      <p class="muted">Manage parking slots, vehicle entry, waiting lines and activity.</p></div>
+      <div class="clock-note">12 parking slots <span>•</span> Local demo</div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card"><div class="stat-label"><span class="dot green"></span> Available slots</div><div id="available" class="stat-number">—</div><div class="stat-foot">Ready for parking</div></article>
+      <article class="stat-card"><div class="stat-label"><span class="dot red"></span> Occupied slots</div><div id="occupied" class="stat-number">—</div><div class="stat-foot">Currently in use</div></article>
+      <article class="stat-card"><div class="stat-label"><span class="dot amber"></span> Waiting vehicles</div><div id="waiting" class="stat-number">—</div><div class="stat-foot">First-in, first-out</div></article>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><h3>Parking overview</h3><p class="muted">Green means available; red means occupied.</p></div><span class="pill">12 slots</span></div>
+      <div id="slots" class="slots"></div>
+    </section>
+
+    <section class="two-column">
+      <section class="panel">
+        <div class="section-heading"><div><h3>Vehicle management</h3><p class="muted">Enter the vehicle registration below.</p></div></div>
+        <label for="vehicle">Registration number</label>
+        <input id="vehicle" type="text" placeholder="e.g. MH12AB1234" autocomplete="off" maxlength="20">
+        <div class="button-grid">
+          <button id="park" class="primary">＋ Park vehicle</button>
+          <button id="exit" class="secondary">↗ Vehicle exit</button>
+          <button id="search" class="outline">⌕ Search vehicle</button>
+          <button id="clear" class="outline">Clear input</button>
+        </div>
+        <div id="message" class="message" role="status" aria-live="polite">Starting parking system…</div>
+      </section>
+      <section class="panel">
+        <div class="section-heading"><div><h3>Waiting queue</h3><p class="muted">Vehicles waiting in FIFO order.</p></div><span class="mini-icon">↕</span></div>
+        <pre id="queue" class="record-list">Loading…</pre>
+      </section>
+    </section>
+
+    <section class="two-column">
+      <section class="panel">
+        <div class="section-heading"><div><h3>Recently exited</h3><p class="muted">Most recent exit appears first (stack).</p></div><span class="mini-icon">↶</span></div>
+        <pre id="exited" class="record-list">Loading…</pre>
+      </section>
+      <section class="panel">
+        <div class="section-heading"><div><h3>Parking history</h3><p class="muted">Activity recorded in a linked list.</p></div><span class="mini-icon">≡</span></div>
+        <pre id="history" class="record-list history">No parking history yet.</pre>
+      </section>
+    </section>
+    <footer>SmartPark DSA Mini Project <span>•</span> C++ + WebAssembly</footer>
+  </main>
+</body>
+</html>
